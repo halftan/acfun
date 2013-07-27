@@ -1,7 +1,8 @@
 require 'rubygems'
 require 'bundler'
+require 'sinatra'
 
-Bundler.require
+Bundler.require :default, Sinatra::Application.environment
 
 Slim::Engine.set_default_options :tabsize => 2
 

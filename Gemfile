@@ -27,11 +27,15 @@ gem "sass"
 gem "sprockets"
 gem "yui-compressor"
 
-gem 'pry-debugger'
 
 group :development do
+  gem 'pry-debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :development, :test do
+  gem 'rspec'
 end
 
 # gem 'redcarpet'
