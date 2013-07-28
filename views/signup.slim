@@ -8,7 +8,7 @@ html lang="zh-CN"
     title == t 'app'
   body
     p == t 'app'
-    form method="post" action="/api/signin"
+    form method="post" action="/api/signup"
       label(for="email") Email
       br
       input#email(autofocus name="email" type="email" placeholder="email")
@@ -16,7 +16,12 @@ html lang="zh-CN"
       label(for="password") Password
       br
       input#password(name="password" type="password" placeholder="password")
+      input#see-password(type="checkbox") See password
       br
-      input(name="commit" type="submit" value="Sign in")
+      input(name="commit" type="submit" value="Sign up")
 
-    a href="/signup" Sign up?
+    a href="/" Already have an account?
+
+    script[src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+      type="text/javascript"]
+    script src="/assets/app.js" type="text/javascript"

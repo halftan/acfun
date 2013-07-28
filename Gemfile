@@ -6,6 +6,7 @@ gem 'sinatra-contrib'
 
 # Database
 gem 'mongoid'
+gem 'bcrypt-ruby'
 
 gem 'i18n'
 
@@ -24,7 +25,7 @@ gem 'slim'
 # assets
 gem "coffee-script"
 gem "sass"
-gem "sprockets"
+gem "sinatra-asset-pipeline"
 gem "yui-compressor"
 
 
