@@ -3,6 +3,7 @@
 
 说明：每个`path`都有对应的`HTTP Verb/Method`，就算`path`相同，`HTTP Verb/Method`不一样的话，调用的api是不同的
 
+#### NameSpace: /
 以下`Path`均以 `http://#{acfun_server}`为根路径(`Base Path`)
 
 	Method		Path					Arguments/Payload			Description
@@ -17,9 +18,10 @@
 
 **所有`Timestamp`均采用`ISO8601`格式**
 
-以下`Path`均以 `http://#{acfun_server}/api`为根路径(`Base Path`)
 
-###Version 0.1
+#### NameSpace: /Api
+
+以下`Path`均以 `http://#{acfun_server}/api`为根路径(`Base Path`)
 
 	Method		Path					Arguments/Payload			Description
 
@@ -37,12 +39,12 @@
 																	课程的详细信息。
 																	返回对象内嵌Schedule数组
 
-	POST		(/user/:id)/courses		json:{"name":"xx",...}		新建一个course模型；
+	POST		/courses				json:{"name":"xx",...}		新建一个course模型；
 																	user必须为teacher，否则返回401.
 																	失败则返回400.
 																	若要内嵌Schedule，则需：
-										{
-											"name":"xx",
+										{								（每个Schedule可包含conditions，
+											"name":"xx",					详见POST /course/:id/schedules）
 											"schedule_attributes":{
 												"0": {
 													"when": "#{timestamp}",
@@ -51,28 +53,28 @@
 												}
 										}
 
-	DELETE		(/user/:id)				None						删除一个Course
-					/course/:id										无权限返回401
-																	找不到此课程返回404
+	DELETE		/course/:id				None						删除一个Course
+																	无权限则返回401
+																	找不到此课程则返回404
 
-	PUT			同上						json:{"name":"xx",...}		修改一个course
+	PUT			/course/:id				json:{"name":"xx",...}		修改一个course
 																	不接受Schedule
 
-	GET			(/user/:id)/course		type=(overdue				返回该课程的所有时间表
+	GET			/course					type=(overdue				返回该课程的所有时间表
 					/:id/schedules			|soon|future)			参数说明：
 											&day=#{int}				overdue：逾期
 																	soon：近期（可加参数day=?）
 																	future：未来
 
-	POST		同上						json:{"when":....			为制定Course增加一个时间表
-											"conditions":{			以下是url中conditions的说明:
+	POST		/course					json:{"when":....			为制定Course增加一个时间表
+					/:id/schedules			"conditions":{			以下是url中conditions的说明:
 												"every":... ,		目前conditions只能够为every/(monday|tuesday...)
 												"from":... ,		此时必须在payload的json中添加两个字段from和until
 												"until":... }		即从from到until这段时间中每个every的when都有课
 												}					from和until都以timestamp来表示，只取到日为止
 																	且计算时包含from和until
 
-	DELETE		(/user/:id/course/		None						删除一个Schedule，无权限返回401
-					:id)/schedule/:id								找不到返回404
+	DELETE		/schedule/:id			None						删除一个Schedule，无权限则返回401
+																	找不到则返回404
 
-	PUT			同上						json:{"when":...)			修改Schedule信息
+	PUT			/schedule/:id			json:{"when":...)			修改Schedule信息
