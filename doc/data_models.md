@@ -1,9 +1,14 @@
 ##数据结构
 
+###NEWS
+
+- 课程新增字段：is_completed, Boolean 	2013-7-23
+- 原Schedule中的Scopes移到Course中		2013-7-31
+
+
+###DOMUCENT
 
 使用 [Mongoid](http://mongoid.org/en/mongoid/)
-
-###Version 0.1
 
 ###用户
 
@@ -47,6 +52,7 @@
 	Field				Type
 
 	name				String
+	is_completed		Boolean
 	
 
 	Relation			Type
@@ -54,6 +60,10 @@
 	lecturers			has_and_belongs_to_many, inverse_of: :teacher
 	students			has_and_belongs_to_many, inverse_of: :student
 	schedual			has_many
+	
+	Scopes:
+	lectures, tests, examinations ... 每一个日程类型都有一个scope，复数形式
+	overdue, soon, future
 
 ###日程
 
@@ -63,16 +73,12 @@
 
 	when				datetime
 	where				String
-	what				one of [:lecture, :test, :examination, :practise] 可能增加
+	what				one of [:lecture, :test, :examination, :practise, :experiment] 可能增加
 
 	Relation			Type
 
 	course				belongs_to
 
-	
-	Scopes:
-	lecture, test, examination, practise
-	overdue, soon, future
 
 
 ##简单说明
@@ -127,14 +133,3 @@
 		  ...
 
 		end
-
-
-###Version 0.12
-
-####新增：课程中的字段
-
-`Class name: Course`
-
-	Field				Type
-
-	is_completed		Boolean

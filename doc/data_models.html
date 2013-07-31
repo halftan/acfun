@@ -274,8 +274,13 @@ img {
 </head>
 <body>
 <h2>数据结构</h2>
+<h3>NEWS</h3>
+<ul>
+<li>课程新增字段：is_completed, Boolean 	2013-7-23</li>
+<li>原Schedule中的Scopes移到Course中		2013-7-31</li>
+</ul>
+<h3>DOMUCENT</h3>
 <p>使用 <a href="http://mongoid.org/en/mongoid/">Mongoid</a></p>
-<h3>Version 0.1</h3>
 <h3>用户</h3>
 <p><code>Class name: User</code></p>
 <pre><code>Field               Type
@@ -312,6 +317,7 @@ teachers, students
 <pre><code>Field               Type
 
 name                String
+is_completed        Boolean
 
 
 Relation            Type
@@ -319,6 +325,10 @@ Relation            Type
 lecturers           has_and_belongs_to_many, inverse_of: :teacher
 students            has_and_belongs_to_many, inverse_of: :student
 schedual            has_many
+
+Scopes:
+lectures, tests, examinations ... 每一个日程类型都有一个scope，复数形式
+overdue, soon, future
 </code></pre>
 
 <h3>日程</h3>
@@ -327,16 +337,11 @@ schedual            has_many
 
 when                datetime
 where               String
-what                one of [:lecture, :test, :examination, :practise] 可能增加
+what                one of [:lecture, :test, :examination, :practise, :experiment] 可能增加
 
 Relation            Type
 
 course              belongs_to
-
-
-Scopes:
-lecture, test, examination, practise
-overdue, soon, future
 </code></pre>
 
 <h2>简单说明</h2>
@@ -396,14 +401,6 @@ end
 
 </li>
 </ul>
-<h3>Version 0.12</h3>
-<h4>新增：课程中的字段</h4>
-<p><code>Class name: Course</code></p>
-<pre><code>Field               Type
-
-is_completed        Boolean
-</code></pre>
-
 
 </body>
 </html>
