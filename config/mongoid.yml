@@ -14,3 +14,10 @@ production:
         - localhost:27017
       username: <%= ENV['MONGO_USERNAME'] %>
       password: <%= ENV['MONGO_PASSWORD'] %>
+
+development:
+  sessions:
+    default:
+      database: acfun_test
+      hosts:
+        - localhost:27017

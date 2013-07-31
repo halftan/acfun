@@ -8,7 +8,7 @@ html lang="zh-CN"
     title == t 'app'
   body
     p == t 'app'
-    form method="post" action="/api/signin"
+    form method="post" action="/api/sign_in"
       label(for="email") Email
       br
       input#email(autofocus name="email" type="email" placeholder="email")
@@ -19,4 +19,4 @@ html lang="zh-CN"
       br
       input(name="commit" type="submit" value="Sign in")
 
-    a href="/signup" Sign up?
+    a href="/sign_up" Sign up?

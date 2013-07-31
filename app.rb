@@ -27,7 +27,7 @@ get 'dashboard' do
   slim :dashboard
 end
 
-get '/signup' do
+get '/sign_up' do
   if current_user
     redirect to('/dashboard')
   else
@@ -35,24 +35,25 @@ get '/signup' do
   end
 end
 
-post '/api/signin' do
+post '/api/sign_in' do
   content_type :json
-  binding.pry
   user = User.where(email: params[:email]).first
   if user.password == params[:password]
+    session[:user_id] = user.id
     success_info user
   else
     fail_info message: "Login error"
   end
 end
 
-post '/api/signup' do
+post '/api/sign_up' do
   content_type :json
   binding.pry
   unless User.where(email: params[:email]).first
     user = User.new email: params[:email],
       password: params[:password]
     if user.save
+      session[:user_id] = user.id
       success_info user
     else
       fail_info
@@ -62,6 +63,9 @@ post '/api/signup' do
   end
 end
 
+# Internal: use session[:user_id] to fetch user model
+# 
+# Return the current user model
 def current_user
   if session[:user_id]
     User.find(session[:user_id])
