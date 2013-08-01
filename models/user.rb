@@ -11,8 +11,10 @@ class User
   field :role,            type: String, default: :student
   field :password_hash,   type: String
 
-  has_and_belongs_to_many :teaching_courses, class_name: "Course", inverse_of: :lecturers
-  has_and_belongs_to_many :courses, inverse_of: :students
+  has_and_belongs_to_many :teaching_courses, class_name: "Course",
+    inverse_of: :lecturers, autosave: true
+  has_and_belongs_to_many :studying_courses, class_name: "Course",
+    inverse_of: :students, autosave: true
 
   attr_protected :password_hash
 
@@ -21,9 +23,26 @@ class User
   validates_format_of       :email, with: /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i,
     message: "Please enter a valid email address"
   validates_presence_of     :role
+  validates_inclusion_of    :role, in: %w(student teacher)
   validates_presence_of     :password_hash
 
-  default_scope without(:password_hash)
+  # default_scope without(:password_hash)
+
+  def courses
+    if role == "teacher"
+      teaching_courses
+    else
+      studying_courses
+    end
+  end
+
+  def course_ids
+    if role == "teacher"
+      teaching_course_ids
+    else
+      studying_course_ids
+    end
+  end
 
   def password=(password)
     bcry_pass = BCrypt::Password.create password
@@ -36,7 +55,7 @@ class User
 
   def self.authenticate email, passwd
     begin
-      user = find_by email: email
+      user = unscoped.find_by email: email
     rescue Mongoid::Errors::DocumentNotFound
       return nil
     end

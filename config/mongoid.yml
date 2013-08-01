@@ -2,9 +2,11 @@
 development:
   sessions:
     default:
-      database: acfun_development
+      database: acfun_test
       hosts:
         - localhost:27017
+  options:
+    allow_dynamic_fields: false
 
 production:
   sessions:
@@ -14,8 +16,10 @@ production:
         - localhost:27017
       username: <%= ENV['MONGO_USERNAME'] %>
       password: <%= ENV['MONGO_PASSWORD'] %>
+  options:
+    allow_dynamic_fields: false
 
-development:
+test:
   sessions:
     default:
       database: acfun_test

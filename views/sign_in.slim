@@ -1,0 +1,22 @@
+doctype html
+html lang="zh-CN"
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title == t 'app'
+  body
+    p == t 'app'
+    form method="post" action="/api/sign_in"
+      label(for="email") Email
+      br
+      input#email(autofocus name="email" type="email" placeholder="email")
+      br
+      label(for="password") Password
+      br
+      input#password(name="password" type="password" placeholder="password")
+      br
+      input(name="commit" type="submit" value="Sign in")
+
+    a href="/sign_up" Sign up?

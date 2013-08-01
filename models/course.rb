@@ -9,7 +9,7 @@ class Course
 
   has_and_belongs_to_many :lecturers, class_name: "User", inverse_of: :teaching_courses
   has_and_belongs_to_many :students, class_name: "User"
-  has_many                :schedules
+  has_many                :schedules, autosave: true
 
   # Dynamically defines scopes for each category,
   # which defined as Schedule::categories.
@@ -20,6 +20,8 @@ class Course
   end
 
   validates_presence_of :name
+
+  accepts_nested_attributes_for :schedules
 
   # Public: Mark a course completed
   #
