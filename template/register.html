@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset = "UTF-8">
+    <title>Acfun - Register</title>
+    <script src = "http://code.jquery.com/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src = "js/bootstrap.min.js"></script>
+    <script src = "js/bootstrap-checkbox.js"></script>
+    <script src = "js/register.js"></script>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <link href = "css/bootstrap.min.css" rel = "stylesheet" media = "screen">
+    <link href = "css/bootstrap-responsive.min.css" rel = "stylesheet" media = "screen">
+    <link href = "css/bootstrap-checkbox.css" rel = "stylesheet" media = "screen">
+</head>
+<body>
+  <div class = "navbar navbar-inverse navbar-fixed-top">
+    <div class = "navbar-inner">
+      <div class = "container">
+        <a class = "brand" href = "#">AfterClassFun</a>
+        <ul class = "nav pull-right">
+          <li style = "height: 40px; line-height: 40px; color: white">已有账号？</li>
+          <li><a href = "#">现在登陆</a></li>
+      </div>
+    </div>
+    <div class = "container">
+      <div class = "hero-unit">
+        <h2>注册</h1>
+        <h4>完全并永久免费</h3>
+        <div>
+          <input type = "text" placeholder = "姓" style = "width: 194px; height: 41px">
+          <input type = "text" placeholder = "名" style = "width: 194px; height: 41px">
+        </div>
+        <div>
+          <input type = "text" placeholder = "电子邮件" style = "width: 398px; height: 41px">
+        </div>
+        <div>
+          <span id="pwdinput">
+            <input type="password" placeholder = "请输入您的密码" id="pwd" style = "width: 398px; height: 41px"/></span> 
+            <input type="checkbox" id="showpwd" onclick="showpwd()">显示密码
+          </span>
+        </div>
+          <a class = "btn btn-primary btn-large">注册</a>
+      </div>
+    </div>
+</body>
+</html>
