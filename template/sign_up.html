@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <title>Acfun - Register</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="assets/stylesheets/app.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap-checkbox.css" rel="stylesheet">
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap-checkbox.js"></script>
+    <script src="assets/javascripts/signup.js"></script>
+</head>
+<body>
+  <div class = "navbar navbar-inverse navbar-fixed-top">
+    <div class = "navbar-inner">
+      <div class = "container">
+        <a class = "brand" href = "#">AfterClassFun</a>
+        <ul class = "nav pull-right">
+          <li style = "height: 40px; line-height: 40px; color: white">已有账号？</li>
+          <li><a href = "#">现在登陆</a></li>
+      </div>
+    </div>
+    <div class = "container">
+      <div class = "hero-unit">
+        <div>
+          <input type="text" placeholder="学号或工号" style="width: 398px; height: 41px" required>
+        </div>
+        <div>
+          <input type="email" placeholder="电子邮件" style="width: 398px; height: 41px" required>
+        </div>
+        <div>
+          <div id="pwdinput">
+            <input type="password" placeholder="请输入您的密码" id="pwd" style = "width: 398px; height: 41px" required/>
+            <input type="checkbox" class="checkbox" id="show-password">显示密码
+          </div>
+        </div>
+          <a class = "btn btn-primary btn-large">注册</a>
+      </div>
+    </div>
+</body>
+</html>

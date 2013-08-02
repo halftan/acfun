@@ -28,3 +28,12 @@ body {
   margin-bottom: 15px;
   padding: 7px 9px;
 }
+#main {
+    padding-top: 20px;
+}
+.avatar {
+  margin: 5px;
+  float: left;
+}
+input.checkbox {
+}
