@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acfun - Index</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="assets/stylesheets/dashboard.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/javascripts/index.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">AfterClassFun</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li ><a href="#dashboard">首页</a></li>
+              <li><a href="#help">帮助</a></li>
+              <li><a href="#about">关于</a></li>
+            </ul>
+            <div class="nav pull-right">
+              <p class="navbar-text pull-left">
+                <a href="#" class="navbar-link">未注册用户</a>
+              </p>
+              <ul class = "nav">
+                <li class="divider-vertical"></li>
+                <li><a href="#">消息</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">设置<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">个人资料</a></li>
+                    <li><a href="#">界面风格</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">待定</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">注销</a></li>
+              </ul>
+            </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div id="main" class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav" ng-controller="TeacherCtrl">
+            <ul class="nav nav-tabs nav-stacked">
+              <li class="nav-header">{{teacher_Ctrl}}</li>
+              <li ng-repeat= "function in teacher_func">
+                <a href="#">{{function.text}}</a>
+              </li>
+              <li class="nav-header">{{teacher_Arra}}</li>
+              <li ng-repeat= "arrange in teacher_arr">
+                <a href="#">{{arrange.text}}</a>
+              </li>      
+            </ul>
+          </div>
+          <div class="well sidebar notifier">
+            <p>Here is the notifier</p>
+          </div>
+        </div>
+        <div class="span10">
+          <div id="main-container" class="container-fluid">
+          <!-- 这里是主界面 -->
+            <div ng-controller="TeacherCtrl">
+              <div class="well">
+                <form ng-submit="addrole">
+                  <input type="text" ng-model="username" size="30"
+                         placeholder="Tell me who you are">
+                </form>
+                <p>Hello {{username}} !</p>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
