@@ -22,6 +22,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="brand" href="#">AfterClassFun</a>
+
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li ><a href="#dashboard">首页</a></li>
@@ -48,12 +49,28 @@
               </ul>
             </div>
           </div><!--/.nav-collapse -->
+          
         </div>
       </div>
     </div>
     <div id="main" class="container-fluid">
       <div class="row-fluid">
-        <div class="span2">
+        <div class="span9">
+          <div id="main-container" class="container-fluid">
+          <!-- 这里是主界面 -->
+            <div ng-controller="TeacherCtrl">
+              <div class="well">
+                <form ng-submit="addrole">
+                  <input type="text" ng-model="username" size="30"
+                         placeholder="Tell me who you are">
+                </form>
+                <p>Hello {{username}} !</p>
+              </div> 
+            </div>
+          </div>
+        </div>
+
+        <div class="span3">
           <div class="well sidebar-nav" ng-controller="TeacherCtrl">
             <ul class="nav nav-tabs nav-stacked">
               <li class="nav-header">{{teacher_Ctrl}}</li>
@@ -68,20 +85,6 @@
           </div>
           <div class="well sidebar notifier">
             <p>Here is the notifier</p>
-          </div>
-        </div>
-        <div class="span10">
-          <div id="main-container" class="container-fluid">
-          <!-- 这里是主界面 -->
-            <div ng-controller="TeacherCtrl">
-              <div class="well">
-                <form ng-submit="addrole">
-                  <input type="text" ng-model="username" size="30"
-                         placeholder="Tell me who you are">
-                </form>
-                <p>Hello {{username}} !</p>
-              </div> 
-            </div>
           </div>
         </div>
       </div>
